@@ -1,0 +1,214 @@
+body {
+    background-color: #f5f7fa;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: linear-gradient(to bottom, #45033a, #2a0345);
+    color: #ecf0f1;
+    transition: width 0.3s;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.sidebar .nav-link {
+    margin: 5px 0;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: background 0.3s;
+}
+
+.sidebar .nav-link.active, .sidebar .nav-link:hover {
+    background-color: #3d9fcc;
+}
+
+.sidebar .nav-link i {
+    margin-right: 10px;
+}
+
+.content {
+    margin-left: 260px;
+    padding: 20px;
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ddd;
+    border-radius: 10px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.header-section .search-bar input {
+    border: 1px solid #ddd;
+    border-radius: 5px 0 0 5px;
+}
+
+.header-section i {
+    color: #2a0345;
+    transition: color 0.3s;
+}
+
+.header-section i:hover {
+    color: #2980b9;
+}
+
+.teacher-card {
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.teacher-card:hover {
+    transform: translateY(-10px);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #ddd;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.card-header img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.teacher-info h3 {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.saved-icon {
+    margin-left: auto;
+    color: #2a0345;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.saved-icon:hover {
+    color: #e74c3c;
+}
+
+.teacher-card.saved {
+    background: linear-gradient(to bottom, #45033a, #2a0345); 
+    color: #ffffff;
+}
+.saved-icon.saved {
+    color: #ffffff;
+}
+.teacher-card.saved .btn-outline-dark {
+    background-color: #ffffff; 
+    color: #45033a;
+    border-color: #ffffff; 
+}
+
+.featured-courses {
+    padding: 60px 0;
+    background-color: #f1f1f1;
+}
+
+.featured-courses h2 {
+    font-size: 36px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.course-grid {
+    display: flex;
+    justify-content: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.course-grid a {
+    color: #0a0a0a;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.course-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    max-width: 300px;
+    height: 350px;
+    transition: transform 0.3s ease;
+    text-align: left;
+    overflow: hidden;
+}
+
+.course-card i {
+    font-size: 25px;
+    padding: 0 0 15px 10px;
+    color: #2a0345;
+    width: 200px;
+}
+
+.course-card i span {
+    font-size: 12px;
+    padding: 5px;
+}
+
+.course-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.course-card h3 {
+    font-size: 20px;
+    padding: 0 10px;
+    margin-bottom:  50px;
+}
+
+.course-card p {
+    padding: 0 10px;
+    color: #666666;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.course-card:hover {
+    transform: translateY(-10px);
+}
+
+.container {
+    margin: auto; 
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
