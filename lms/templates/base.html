@@ -64,21 +64,19 @@
                             <i class="fas fa-i"></i> Information
                         </a>
                     </li>
-                    <!-- {% if user_profile.is_student %}
-                    <li>
-                        <a href="{% url 'logout' %}" class="nav-link text-light">
-                            <i class="fas fa-sign-out-alt"></i> Log Out
-                        </a>
-                    </li>
-                    {%endif%} -->
-
                 </ul>
                 <hr>
                 <div class="dropdown">
                     <a href="#" class="text-light text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{% static 'img/profile.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>Profile</strong>
+                        {% if user_profile.is_teacher %}
+                            <img src="{% static 'img/teacher1.png' %}" alt="Profile" width="30" height="30"
+                        class="rounded-circle">
+                        {% else %}
+                            <img src="{% static 'img/teacher4.png' %}" alt="Profile" width="30" height="30"
+                        class="rounded-circle">
+                        {% endif %}
+                        <strong> Profile </strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
                         <li><a class="dropdown-item" href="#"><i class="fas fa-cog"></i> Settings</a></li>
@@ -99,7 +97,7 @@
     </div>
 
     <!-- Custom JS -->
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static '/javascript/main.js' %}"></script>
     <!-- Bootstrap JS (from CDN or local) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>

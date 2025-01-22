@@ -22,18 +22,4 @@
     </div>
 </div>
 
-<script>
-    function previewVideo(input) {
-        const videoPreview = document.getElementById('video_preview');
-        if (input.files && input.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                videoPreview.src = e.target.result;
-                videoPreview.style.display = 'block';
-            };
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-</script>
-
 {% endblock %}

@@ -339,50 +339,6 @@
     </section>
     <hr>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const newsGrid = document.querySelector(".news-grid");
-        
-            async function fetchNews() {
-                try {
-                    const response = await fetch('/fetch_news/');
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! Status: ${response.status}`);
-                    }
-                    const data = await response.json();
-                    displayNews(data.articles);
-                } catch (error) {
-                    console.error('Error fetching news:', error.message);
-                    newsGrid.innerHTML = `<p class="error">Unable to load news. Please try again later. (${error.message})</p>`;
-                }
-            }
-        
-            function displayNews(articles) {
-                if (!articles || articles.length === 0) {
-                    newsGrid.innerHTML = `<p class="no-news">No news available at the moment.</p>`;
-                    return;
-                }
-        
-                // Limit to 3 articles
-                const limitedArticles = articles.slice(0, 3);
-        
-                // Populate news content
-                newsGrid.innerHTML = limitedArticles
-                    .map(article => `
-                        <div class="news-item">
-                            <img src="${article.urlToImage || '../../static/img/foot_icon.png'}" alt="${article.title}" class="news-image">
-                            <h5 class="news-title"><strong>${article.title}</strong></h5>
-                            <p class="news-description">${article.description || 'No description available.'}</p>
-                            <a href="${article.url}" target="_blank" class="news-link">Read more</a>
-                        </div>
-                    `)
-                    .join('');
-            }
-            // Fetch news on page load
-            fetchNews();
-        });
-    </script>
-
     <!-- Top Instructors Section -->
     <section class="instructors" id="Instructors">
         <div class="container">
@@ -469,27 +425,6 @@
         </div>
     </section>
 
-    <style>
-        .countdown-newsletter {
-            text-align: center;
-            padding: 20px;
-        }
-    
-        .countdown p {
-            display: inline-block;
-            margin: 10px;
-            font-size: 18px;
-        }
-    
-        #offer-ended {
-            font-size: 20px;
-            font-weight: bold;
-            color: rgb(38, 0, 73);
-            display: none;
-            /* Initially hidden */
-        }
-    </style>
-    
     <!-- Countdown & Newsletter Section -->
     <section class="countdown-newsletter" id="massage">
         <div class="container">
@@ -507,31 +442,6 @@
             </form>
         </div>
     </section>
-
-    <script>
-        const targetDate = new Date(new Date().getTime() + 2 * 24 * 60 * 60 * 1000).getTime();
-
-        const countdownInterval = setInterval(function () {
-        const now = new Date().getTime();
-        const timeLeft = targetDate - now;
-
-        const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-        document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent = hours;
-        document.getElementById("minutes").textContent = minutes;
-        document.getElementById("seconds").textContent = seconds;
-
-        if (timeLeft <= 0) {
-            clearInterval(countdownInterval);
-            document.querySelector('.countdown').style.display = 'none';
-            document.getElementById('offer-ended').style.display = 'block';
-        }
-        }, 1000);
-    </script>
 
     <!-- Footer Section -->
     <footer>
@@ -586,7 +496,7 @@
         </div>
     </footer>
 
-    <script src="{% static 'js/main.js' %}?v=1"></script>
+    <script src="{% static '/javascript/main.js' %}"></script>
 </body>
 
 </html>
