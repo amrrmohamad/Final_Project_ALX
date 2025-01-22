@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Course Details{% endblock %}
+{% block content %}
+<div class="container-a" style="margin-left: 130px;">
+    <br>
+    <h1 style="color: rgb(84, 0, 163);">- {{ course.title }}</h1>
+    <br>
+
+    <video autoplay loop width="820" height="440" controls>
+        <source src="{{ video_url }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <hr>
+    <h6 > {{ course.description }}</h6>
+
+    <div class="mt-4">
+        <a href="{% url 'dashboard' %}" class="btn btn-secondary">Back to Dashboard</a>
+    </div>
+</div>
+{% endblock %}
