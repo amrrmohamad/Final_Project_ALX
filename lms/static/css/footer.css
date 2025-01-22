@@ -1,0 +1,135 @@
+/* Footer Section */
+footer {
+    background-color: #f1f1f1;
+    color: #340163;
+    padding: 60px 0;
+    text-align: left;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Company Info */
+.footer-about {
+    flex: 1;
+    margin-right: 40px;
+}
+
+.footer-about h3 {
+    font-size: 22px;
+    color: #340163;
+    margin-bottom: 20px;
+}
+
+.footer-about p {
+    padding-left: 30px;
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.footer-about a {
+    padding-left: 30px;
+    color: #340163;
+    text-decoration: none;
+}
+
+.footer-about a:hover {
+    text-decoration: underline;
+}
+
+.footer-about img {
+    padding-left: 30px;
+    height: 100px;
+}
+
+/* Footer Links */
+.footer-links {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-links div {
+    margin-right: 40px;
+}
+
+.footer-links h3 {
+    font-size: 22px;
+    color: #340163;
+    margin-bottom: 20px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links ul li a {
+    color: #340163;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover {
+    color: #b481e0;
+}
+
+/* Social Media Icons */
+.footer-social {
+    flex: 1;
+    text-align: center;
+}
+
+.footer-social h3 {
+    font-size: 22px;
+    color: #340163;
+    margin-bottom: 20px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background-color: #333;
+    border-radius: 50%;
+    color: white;
+    font-size: 18px;
+    text-align: center;
+    line-height: 40px;
+    transition: background-color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: #340163;
+}
+
+/* Copyright Section */
+.footer-bottom {
+    color: #4d4d4d;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
