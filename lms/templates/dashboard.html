@@ -28,7 +28,7 @@
                     data-bs-toggle="offcanvas" data-bs-target="#savedItemsCanvas"
                     aria-controls="savedItemsCanvas"></i>
                 <!-- Profile image -->
-                <img src="{% static 'img/profile.jpg' %}" alt="Profile" width="40" height="40"
+                <img src="{% static '/img/profile.jpg' %}" alt="Profile" width="40" height="40"
                     class="rounded-circle" style="cursor: pointer;">
             </div>
         </div>
@@ -51,6 +51,10 @@
                             <!--<p class="card-text">{{ enrollment.course.description }}</p>-->
                             <a href="{% url 'view_course' enrollment.course.id %}" class="btn btn-success"
                                 style="background-color: rgb(50, 1, 95); border: none; position: absolute; bottom: 8px; left: 12px;">View Course</a>
+                            <form action="{% url 'delete_course' enrollment.course.id %}" method="post" style="display:inline; position:absolute; right:10px; bottom:8px">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -88,7 +92,7 @@
                     </a>
                     <a href="https://www.coursera.org/learn/leading-teams-developing-as-a-leader" target="_blank" rel="noopener">
                         <div class="course-card">
-                            <img src="{% static 'img/GIES_Icon_B.png' %}" alt="course">
+                            <img src="{% static '/img/GIES_Icon_B.png' %}" alt="course">
                             <i class="fab fa-google"> <span>google</span></i>
                             <h3>Leading Teams: Developing as a Leader</h3>
                             <p class="course-level">Beginner - Course</p>
@@ -96,7 +100,7 @@
                     </a>
                     <a href="https://www.coursera.org/specializations/graphic-design" target="_blank" rel="noopener">
                         <div class="course-card">
-                            <img src="{% static 'img/design.png' %}" alt="course">
+                            <img src="{% static '/img/design.png' %}" alt="course">
                             <i class="fab fa-c"> <span>coursera</span></i>
                             <h3>UI/UX Beginners</h3>
                             <p class="course-level">Beginner - Course</p>
@@ -311,7 +315,7 @@
                     {% for course in available_courses %}
                     <a>
                         <div class="course-card" style="margin: 10px; height: max-content;">
-                            <img src="{% static 'img/foot_icon.png' %}" alt="course">
+                            <img src="{% static '/img/foot_icon.png' %}" alt="course">
                             <i class="fab fa-e"> <span>E-learning</span></i>
                             <h3 class="card-title">{{ course.title }}</h3>
                             <p class="card-text"><strong>Teacher: {{ course.created_by.user.username }}</strong></p>
@@ -341,10 +345,14 @@
                     <h5 class="card-title">{{ course.title }}</h5>
                     <a href="#" class="text-light text-decoration-none dropdown-toggle" id="dropdownUser" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <img src="{% static 'img/profile.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <img src="{% static '/img/profile.jpg' %}" alt="" width="32" height="32" class="rounded-circle me-2">
                     </a>
                     <p class="card-text"><strong>Teacher: {{ course.created_by.user.username }}</strong></p>
                     <a href="{% url 'view_course' course.id %}" class="btn btn-success">View Course</a>
+                    <form action="{% url 'delete_course' course.id %}" method="post" style="display:inline; position:absolute; right:10px; bottom:15px">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -13,7 +13,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="{% static 'css/teacher.css' %}">
+    <link rel="stylesheet" href="{% static '/css/teacher.css' %}">
 </head>
 
 <body>
@@ -78,7 +78,7 @@
                 </ul>
             </div>
         </div>
-        <div class="content" style="margin-left: 260px; padding: 5px;">
+        <div class="content" style="margin-left: 260px; padding: 5px; width: -webkit-fill-available;">
             <!-- Main content next to Sidebar -->
             <div class="flex-grow-1 d-flex flex-column">
                 
@@ -94,7 +94,8 @@
 						<!-- Notification icon -->
                         <i class="fas fa-bell me-3" style="font-size: 1.5rem; cursor: pointer;"
                             data-bs-toggle="offcanvas" data-bs-target="#notificationCanvas"
-                            aria-controls="#notificationCanvas"></i>
+                            aria-label="Toggle notification canvas">
+                        </i>
 						<!-- Saved items button -->
 						<i class="fas fa-bookmark me-3" style="font-size: 1.5rem; cursor: pointer;"
 							data-bs-toggle="offcanvas" data-bs-target="#savedItemsCanvas"
@@ -108,9 +109,9 @@
                 <section class="p-4" style="animation: fadeIn 1s ease-in-out;">
                     <h2 style="color: rgb(77, 0, 116);">- Teachers</h2>
                     <br>
-                    <div class="instructor-grid">
+                    <div class="instructor-grid" style="display: inline-flex; flex-direction: row; flex-wrap: wrap; gap: 20px;">
                         {% for teacher in all_teachers %}
-                        <div class="card-slider" style="width: 25%;">
+                        <div class="card-slider" style="width: 300px; display: flex;" >
                             <div class="teacher-card">
                                 <div class="card-header" style="background: unset;">
                                     <img src="{% static 'img/teacher1.png' %}" alt="Teacher">
@@ -162,7 +163,19 @@
 		</div>
     </div>
     <script>
-        
+        const logoutUrl = "{% url 'logout' %}";
+
+        document.querySelectorAll('.action-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                event.preventDefault();
+
+                const userResponse = confirm('Login as a student to enroll in courses?');
+
+                if (userResponse) {
+                    window.location.href = logoutUrl;
+                }
+            });
+        });
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

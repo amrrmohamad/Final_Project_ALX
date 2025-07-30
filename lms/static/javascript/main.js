@@ -67,6 +67,13 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchNews();
 });
 
+//======================================================================
+
+
+
+
+
+
 //====================== saved button ==============================
 const savedIcons = document.querySelectorAll('.saved-icon');
 

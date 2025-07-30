@@ -84,31 +84,17 @@ def dashboard(request):
 def teacher(request):
 
     user_profile = request.user.userprofile
+    all_teachers = UserProfile.objects.filter(user_type='teacher')
+    all_students = UserProfile.objects.filter(user_type='student')
+    created_courses = Course.objects.filter(created_by=user_profile)
 
-    if user_profile.is_teacher():
-
-        all_teachers = UserProfile.objects.filter(user_type='teacher')
-        created_courses = Course.objects.filter(created_by=user_profile)
-
-        context = {
-            'created_courses': created_courses,  
-            'user_profile': user_profile,        
-            'all_teachers': all_teachers,               
-        }
-
-        return render(request, 'teacher.html', context)
-    else:
-        all_teachers = UserProfile.objects.filter(user_type='teacher')
-        all_students = UserProfile.objects.filter(user_type='student')
-        created_courses = Course.objects.filter(created_by=user_profile)
-
-        context = {
-            'created_courses': created_courses,  
-            'user_profile': user_profile,        
-            'all_teachers': all_teachers,
-            'all_student' : all_students,              
-        }
-        return render(request, 'student_teachers.html', context)
+    context = {
+        'created_courses': created_courses,  
+        'user_profile': user_profile,        
+        'all_teachers': all_teachers,
+        'all_students' : all_students,              
+    }
+    return render(request, 'student_teachers.html', context)
 
 @login_required
 def courses(request):
@@ -198,7 +184,24 @@ def fetch_news(request):
     try:
         # Fetch data from NewsAPI
         response = requests.get(url, params=params)
-        response.raise_for_status()  # Raise exception for HTTP errors
-        return JsonResponse(response.json())  # Forward the response as JSON
+        response.raise_for_status()
+        return JsonResponse(response.json())
     except requests.exceptions.RequestException as e:
         return JsonResponse({"error": "Failed to fetch news", "details": str(e)}, status=500)
+
+@login_required
+def delete_course(request, course_id):
+    user_profile = UserProfile.objects.get(user=request.user)
+    course = Course.objects.get(id=course_id)
+
+    if user_profile.is_teacher() and course.created_by == user_profile:
+        course.delete()
+        return redirect('dashboard')
+
+    if user_profile.is_student():
+        enrollment = Enrollment.objects.filter(student=user_profile, course=course).first()
+        if enrollment:
+            enrollment.delete()
+            return redirect('dashboard')
+
+    return HttpResponseForbidden("You do not have permission to delete this course.")
